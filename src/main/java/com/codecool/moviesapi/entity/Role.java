@@ -1,9 +1,6 @@
 package com.codecool.moviesapi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "roles")
 public class Role {
@@ -11,6 +8,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roleId;
 
+    @Column(nullable = false, length = 50)
     private String name;
 
     public Role(String name) {

@@ -9,6 +9,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long countryId;
 
+    @Column(nullable = false, length = 50)
     private String name;
 
     @ManyToMany(mappedBy = "countries")

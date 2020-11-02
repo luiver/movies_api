@@ -58,7 +58,7 @@ public class Movie {
     @Column(nullable = false)
     private int year;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String description;
 
     public long getMovieId() {
