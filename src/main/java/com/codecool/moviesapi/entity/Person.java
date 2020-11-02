@@ -17,7 +17,7 @@ public class Person {
     @Column(nullable = false, length = 50)
     private String surname;
 
-    @OneToMany
+    @ManyToOne
     @Column(name = "country_id")
     private long countryId;
 
