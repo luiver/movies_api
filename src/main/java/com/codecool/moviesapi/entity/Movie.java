@@ -14,9 +14,31 @@ public class Movie implements Indexable {
     private String title;
 
     @ManyToMany
+    @JoinTable(
+            name = "movies_genres",
+            joinColumns = @JoinColumn(
+                    name = "movie_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "genre_id",
+                    referencedColumnName = "id"
+            )
+    )
     private Set<Genre> genres;
 
     @ManyToMany
+    @JoinTable(
+            name = "movies_countries",
+            joinColumns = @JoinColumn(
+                    name = "movie_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "country_id",
+                    referencedColumnName = "id"
+            )
+    )
     private Set<Country> countries;
 
     @Column(nullable = false)
