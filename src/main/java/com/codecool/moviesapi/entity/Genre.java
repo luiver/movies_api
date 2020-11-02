@@ -13,8 +13,9 @@ public class Genre {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @ManyToMany(mappedBy = "genres")
-    private Set<Movie> movies;
+//    uncomment for bidirectional relation
+//    @ManyToMany(mappedBy = "genres")
+//    private Set<Movie> movies;
 
     public Genre(long genreId, String name) {
         this.genreId = genreId;

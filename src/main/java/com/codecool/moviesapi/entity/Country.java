@@ -12,8 +12,9 @@ public class Country {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @ManyToMany(mappedBy = "countries")
-    private Set<Movie> movies;
+//    uncomment for bidirectional relation
+//    @ManyToMany(mappedBy = "countries")
+//    private Set<Movie> movies;
 
     public Country(String name) {
         this.name = name;
@@ -46,11 +47,11 @@ public class Country {
                 '}';
     }
 
-    public Set<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(Set<Movie> movies) {
-        this.movies = movies;
-    }
+//    public Set<Movie> getMovies() {
+//        return movies;
+//    }
+//
+//    public void setMovies(Set<Movie> movies) {
+//        this.movies = movies;
+//    }
 }

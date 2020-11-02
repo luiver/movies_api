@@ -41,20 +41,6 @@ public class Movie {
     )
     private Set<Country> countries;
 
-    @ManyToMany
-//    @JoinTable(
-//            name = "movies_people",
-//            joinColumns = @JoinColumn(
-//                    name = "movie_id",
-//                    referencedColumnName = "movieId"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "person_id",
-//                    referencedColumnName = "personId"
-//            )
-//    )
-    private Set<Country> peoples; //todo add role_id
-
     @Column(nullable = false)
     private int year;
 
@@ -107,14 +93,6 @@ public class Movie {
 
     public void setCountries(Set<Country> countries) {
         this.countries = countries;
-    }
-
-    public Set<Country> getPeoples() {
-        return peoples;
-    }
-
-    public void setPeoples(Set<Country> peoples) {
-        this.peoples = peoples;
     }
 
     public Movie() {
