@@ -1,23 +1,37 @@
 package com.codecool.moviesapi.service;
 
+import com.codecool.moviesapi.entity.Indexable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public interface GenericService<T> {
-//    private Repository movieRepository;
+public abstract class GenericService<T extends Indexable> {
+    private final CrudRepository<T, Long> repository;
 
-    public Iterable<T> getAll();
+    public GenericService(CrudRepository<T, Long> repository) {
+        this.repository = repository;
+    }
 
-    public void setRepository(CrudRepository<T, Long> movieRepository);
+    public Iterable<T> getAll() {
+        return repository.findAll();
+    }
 
-    public Optional<T> getById(Long id);
+    public Optional<T> getById(Long id) {
+        return repository.findById(id);
+    }
 
-    public void removeById(Long id);
+    public void removeById(Long id) {
+        repository.deleteById(id);
+    }
 
-    public void update(T newObject, Long id);
+    public void update(T newObject, Long id) {
+        newObject.setId(id);
+        repository.save(newObject);
+    }
 
-    public void insert(T movie);
+    public void insert(T movie) {
+        repository.save(movie);
+    }
 }
