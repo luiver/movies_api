@@ -41,6 +41,17 @@ public class Movie implements Indexable {
     )
     private Set<Country> countries;
 
+    @OneToMany(mappedBy="movie")
+    private Set<MoviePersonRole> people;
+
+    public Set<MoviePersonRole> getPeople() {
+        return people;
+    }
+
+    public void setPeople(Set<MoviePersonRole> people) {
+        this.people = people;
+    }
+
     @Column(nullable = false)
     private int year;
 
