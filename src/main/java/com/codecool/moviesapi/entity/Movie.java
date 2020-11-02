@@ -32,4 +32,57 @@ public class Movie {
 
     @Column(nullable = false, length = 100)
     private String description;
+
+
+    public Movie(long movie_id, String title, int year, String description) {
+        this.movie_id = movie_id;
+        this.title = title;
+        this.year = year;
+        this.description = description;
+    }
+
+    public Movie() {
+    }
+
+    public long getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(long movie_id) {
+        this.movie_id = movie_id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movie_id=" + movie_id +
+                ", title='" + title + '\'' +
+                ", year=" + year +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
