@@ -28,31 +28,31 @@ public class Movie {
     private Set<Genre> genres;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_countries",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movie_id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "country_id",
-                    referencedColumnName = "country_id"
-            )
-    )
+//    @JoinTable(
+//            name = "movies_countries",
+//            joinColumns = @JoinColumn(
+//                    name = "movie_id",
+//                    referencedColumnName = "movie_id"
+//            ),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "country_id",
+//                    referencedColumnName = "country_id"
+//            )
+//    )
     private Set<Country> countries;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_people",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movie_id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "person_id",
-                    referencedColumnName = "person_id"
-            )
-    )
+//    @JoinTable(
+//            name = "movies_people",
+//            joinColumns = @JoinColumn(
+//                    name = "movie_id",
+//                    referencedColumnName = "movie_id"
+//            ),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "person_id",
+//                    referencedColumnName = "person_id"
+//            )
+//    )
     private Set<Country> peoples; //todo add role_id
 
     @Column(nullable = false)
