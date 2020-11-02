@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
-    Person findByPersonId(Long id);
+    Person findPersonById(Long id);
 
-    void deleteByPersonId(Long id);
+    void deletePersonById(Long id);
 }
