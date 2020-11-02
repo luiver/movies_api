@@ -5,15 +5,13 @@ import com.codecool.moviesapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 @RequestMapping("/people")
 public class PersonController {
     private PersonService personService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Person> getAllPeople() {
+    public Iterable<Person> getAllPeople() {
         return personService.getAllPeople();
     }
 
