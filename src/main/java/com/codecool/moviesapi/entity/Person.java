@@ -1,5 +1,7 @@
 package com.codecool.moviesapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -15,9 +17,13 @@ public class Person implements Indexable {
     @Column(nullable = false, length = 50)
     private String surname;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String bio;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date dateOfBirth;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @ManyToOne
     private Country country;
 
