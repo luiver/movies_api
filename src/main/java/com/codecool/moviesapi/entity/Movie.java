@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "movies")
-public class Movie {
+public class Movie implements Indexable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String title;
@@ -25,11 +25,11 @@ public class Movie {
     @Column(nullable = false)
     private String description;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,7 +76,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(long id, String title, int year, String description) {
+    public Movie(Long id, String title, int year, String description) {
         this.id = id;
         this.title = title;
         this.year = year;

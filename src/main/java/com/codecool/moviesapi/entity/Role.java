@@ -3,7 +3,7 @@ package com.codecool.moviesapi.entity;
 import javax.persistence.*;
 
 @Entity(name = "roles")
-public class Role {
+public class Role implements Indexable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

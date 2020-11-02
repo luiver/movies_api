@@ -3,11 +3,11 @@ package com.codecool.moviesapi.entity;
 import javax.persistence.*;
 
 @Entity(name = "genres")
-public class Genre {
+public class Genre implements Indexable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -16,7 +16,7 @@ public class Genre {
 //    @ManyToMany(mappedBy = "genres")
 //    private Set<Movie> movies;
 
-    public Genre(long id, String name) {
+    public Genre(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -24,11 +24,11 @@ public class Genre {
     public Genre() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

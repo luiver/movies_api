@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity(name = "people")
-public class Person {
+public class Person implements Indexable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
