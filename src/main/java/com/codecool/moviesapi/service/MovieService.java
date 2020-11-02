@@ -1,38 +1,39 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.dao.MovieRepository;
 import com.codecool.moviesapi.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 @Service
-public class MovieService {
-    private MovieRepository movieRepository;
+public class MovieService implements GenericService<Movie> {
+    private CrudRepository<Movie, Long> movieRepository;
 
-    public Iterable<Movie> getAllMovies() {
+    public Iterable<Movie> getAll() {
         return movieRepository.findAll();
     }
 
     @Autowired
-    public void setMovieDao(MovieRepository movieRepository) {
+    public void setRepository(CrudRepository<Movie, Long> movieRepository) {
         this.movieRepository = movieRepository;
     }
 
-    public Movie getMovieById(Long id) {
-        return movieRepository.findByMovieId(id);
+    public Optional<Movie> getById(Long id) {
+        return movieRepository.findById(id);
     }
 
-    public void removeMovieById(Long id) {
-        movieRepository.deleteByMovieId(id);
+    public void removeById(Long id) {
+        movieRepository.deleteById(id);
     }
 
-    public void updateMovie(Movie newMovie, Long id) {
-        newMovie.setMovieId(id);
+    public void update(Movie newMovie, Long id) {
+        newMovie.setId(id);
         movieRepository.save(newMovie);
     }
 
-    public void insertMovie(Movie movie) {
+    public void insert(Movie movie) {
         movieRepository.save(movie);
     }
 }
