@@ -19,11 +19,11 @@ public class PersonService {
     }
 
     public Person getPersonById(Long id) {
-        return personRepository.findPersonById(id);
+        return personRepository.findByPersonId(id);
     }
 
     public void removePersonById(Long id) {
-        personRepository.deletePersonById(id);
+        personRepository.deleteByPersonId(id);
     }
 
     public void updatePerson(Person newPerson, Long id) {

@@ -20,11 +20,11 @@ public class MovieService {
     }
 
     public Movie getMovieById(Long id) {
-        return movieRepository.findMovieById(id);
+        return movieRepository.findByMovieId(id);
     }
 
     public void removeMovieById(Long id) {
-        movieRepository.deleteMovieById(id);
+        movieRepository.deleteByMovieId(id);
     }
 
     public void updateMovie(Movie newMovie, Long id) {
