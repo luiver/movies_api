@@ -8,7 +8,7 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "person_id")
+    @Column
     private long personId;
 
     @Column(nullable = false, length = 50)
@@ -18,12 +18,12 @@ public class Person {
     private String surname;
 
     @ManyToOne
-    @Column(name = "country_id")
-    private long countryId;
+    @Column
+    private Country country;
 
     @Column
     private String bio;
 
-    @Column(name = "date_of_birth")
+    @Column
     private Date dateOfBirth;
 }
