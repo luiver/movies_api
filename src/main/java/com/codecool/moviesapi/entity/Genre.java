@@ -8,7 +8,7 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long genre_id;
+    private long genreId;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -16,20 +16,20 @@ public class Genre {
     @ManyToMany(mappedBy = "genres")
     private Set<Movie> movies;
 
-    public Genre(long genre_id, String name) {
-        this.genre_id = genre_id;
+    public Genre(long genreId, String name) {
+        this.genreId = genreId;
         this.name = name;
     }
 
     public Genre() {
     }
 
-    public long getGenre_id() {
-        return genre_id;
+    public long getGenreId() {
+        return genreId;
     }
 
-    public void setGenre_id(long genre_id) {
-        this.genre_id = genre_id;
+    public void setGenreId(long genreId) {
+        this.genreId = genreId;
     }
 
     public String getName() {
@@ -43,7 +43,7 @@ public class Genre {
     @Override
     public String toString() {
         return "Genre{" +
-                "genre_id=" + genre_id +
+                "genreId=" + genreId +
                 ", name='" + name + '\'' +
                 '}';
     }
