@@ -8,37 +8,15 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long movieId;
+    private long id;
 
     @Column(nullable = false, length = 50)
     private String title;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_genres",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movieId"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "genre_id",
-                    referencedColumnName = "genreId"
-            )
-    )
     private Set<Genre> genres;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_countries",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movieId"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "country_id",
-                    referencedColumnName = "countryId"
-            )
-    )
     private Set<Country> countries;
 
     @Column(nullable = false)
@@ -47,12 +25,12 @@ public class Movie {
     @Column(nullable = false)
     private String description;
 
-    public long getMovieId() {
-        return movieId;
+    public long getId() {
+        return id;
     }
 
-    public void setMovieId(long movieId) {
-        this.movieId = movieId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -98,8 +76,8 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(long movieId, String title, int year, String description) {
-        this.movieId = movieId;
+    public Movie(long id, String title, int year, String description) {
+        this.id = id;
         this.title = title;
         this.year = year;
         this.description = description;

@@ -1,13 +1,12 @@
 package com.codecool.moviesapi.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity(name = "countries")
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long countryId;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -23,12 +22,12 @@ public class Country {
     public Country() {
     }
 
-    public Long getCountryId() {
-        return countryId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCountryId(Long countryId) {
-        this.countryId = countryId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -42,7 +41,7 @@ public class Country {
     @Override
     public String toString() {
         return "Country{" +
-                "countryId=" + countryId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }

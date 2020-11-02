@@ -5,6 +5,8 @@ import com.codecool.moviesapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/people")
 public class PersonController {
@@ -12,7 +14,7 @@ public class PersonController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Person> getAllPeople() {
-        return personService.getAllPeople();
+        return personService.getAll();
     }
 
     @Autowired
@@ -21,22 +23,22 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Person getPersonById(@PathVariable Long id) {
-        return personService.getPersonById(id);
+    public Optional<Person> getPersonById(@PathVariable Long id) {
+        return personService.getById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deletePersonById(@PathVariable Long id) {
-        personService.removePersonById(id);
+        personService.removeById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void updatePerson(@RequestBody Person newPerson, @PathVariable Long id) {
-        personService.updatePerson(newPerson, id);
+        personService.update(newPerson, id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public void insertPerson(@RequestBody Person person) {
-        personService.insertPerson(person);
+        personService.insert(person);
     }
 }
