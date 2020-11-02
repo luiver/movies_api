@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 public abstract class GenericService<T extends Indexable> {
     private final CrudRepository<T, Long> repository;
 
