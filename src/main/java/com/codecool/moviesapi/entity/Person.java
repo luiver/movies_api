@@ -19,6 +19,7 @@ public class Person {
     private Date dateOfBirth;
 
     @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
 
     public Person(String name, String surname, String bio, Date dateOfBirth, Country country) {
