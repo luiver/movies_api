@@ -14,31 +14,31 @@ public class Movie {
     private String title;
 
     @ManyToMany
-//    @JoinTable(
-//            name = "movies_genres",
-//            joinColumns = @JoinColumn(
-//                    name = "movie_id",
-//                    referencedColumnName = "movie_id"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "genre_id",
-//                    referencedColumnName = "genre_id"
-//            )
-//    )
+    @JoinTable(
+            name = "movies_genres",
+            joinColumns = @JoinColumn(
+                    name = "movie_id",
+                    referencedColumnName = "movieId"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "genre_id",
+                    referencedColumnName = "genreId"
+            )
+    )
     private Set<Genre> genres;
 
     @ManyToMany
-//    @JoinTable(
-//            name = "movies_countries",
-//            joinColumns = @JoinColumn(
-//                    name = "movie_id",
-//                    referencedColumnName = "movie_id"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "country_id",
-//                    referencedColumnName = "country_id"
-//            )
-//    )
+    @JoinTable(
+            name = "movies_countries",
+            joinColumns = @JoinColumn(
+                    name = "movie_id",
+                    referencedColumnName = "movieId"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "country_id",
+                    referencedColumnName = "countryId"
+            )
+    )
     private Set<Country> countries;
 
     @ManyToMany
@@ -46,11 +46,11 @@ public class Movie {
 //            name = "movies_people",
 //            joinColumns = @JoinColumn(
 //                    name = "movie_id",
-//                    referencedColumnName = "movie_id"
+//                    referencedColumnName = "movieId"
 //            ),
 //            inverseJoinColumns = @JoinColumn(
 //                    name = "person_id",
-//                    referencedColumnName = "person_id"
+//                    referencedColumnName = "personId"
 //            )
 //    )
     private Set<Country> peoples; //todo add role_id
@@ -65,8 +65,8 @@ public class Movie {
         return movieId;
     }
 
-    public void setMovieId(long movie_id) {
-        this.movieId = movie_id;
+    public void setMovieId(long movieId) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {
@@ -98,6 +98,32 @@ public class Movie {
     }
 
     public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Country> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(Set<Country> countries) {
+        this.countries = countries;
+    }
+
+    public Set<Country> getPeoples() {
+        return peoples;
+    }
+
+    public void setPeoples(Set<Country> peoples) {
+        this.peoples = peoples;
+    }
+
+    public Movie() {
+    }
+
+    public Movie(long movieId, String title, int year, String description) {
+        this.movieId = movieId;
+        this.title = title;
+        this.year = year;
         this.description = description;
     }
 }
