@@ -1,38 +1,37 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.dao.PersonDao;
+import com.codecool.moviesapi.dao.PersonRepository;
 import com.codecool.moviesapi.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 @Service
 public class PersonService {
-    private PersonDao personDao;
+    private PersonRepository personRepository;
 
-    public Collection<Person> getAllPeople() {
-        return personDao.getAllPeople();
+    public Iterable<Person> getAllPeople() {
+        return personRepository.findAll();
     }
 
     @Autowired
-    public void setPersonDao(PersonDao personDao) {
-        this.personDao = personDao;
+    public void setPersonRepository(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
     public Person getPersonById(Long id) {
-        return personDao.getPersonById(id);
+        return personRepository.findByPersonId(id);
     }
 
     public void removePersonById(Long id) {
-        personDao.removePersonById(id);
+        personRepository.deleteByPersonId(id);
     }
 
     public void updatePerson(Person newPerson, Long id) {
-        personDao.updatePerson(newPerson, id);
+        newPerson.setPersonId(id);
+        personRepository.save(newPerson);
     }
 
     public void insertPerson(Person person) {
-        personDao.insertPerson(person);
+        personRepository.save(person);
     }
 }
