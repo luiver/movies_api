@@ -2,6 +2,7 @@ package com.codecool.moviesapi.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity(name = "people")
 public class Person {
@@ -21,6 +22,9 @@ public class Person {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
+
+    @ManyToMany(mappedBy = "peoples")
+    private Set<Movie> movies;
 
     public Person(String name, String surname, String bio, Date dateOfBirth, Country country) {
         this.name = name;
@@ -91,5 +95,13 @@ public class Person {
                 ", dateOfBirth=" + dateOfBirth +
                 ", country=" + country +
                 '}';
+    }
+
+    public Set<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(Set<Movie> movies) {
+        this.movies = movies;
     }
 }
