@@ -2,7 +2,6 @@ package com.codecool.moviesapi.service;
 
 import com.codecool.moviesapi.entity.Indexable;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
