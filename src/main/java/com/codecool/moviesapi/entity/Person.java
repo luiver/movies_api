@@ -23,8 +23,9 @@ public class Person {
     @JoinColumn(name = "country_id")
     private Country country;
 
-    @ManyToMany(mappedBy = "peoples")
-    private Set<Movie> movies;
+//    uncomment for bidirectional relation
+//    @ManyToMany(mappedBy = "peoples")
+//    private Set<Movie> movies;
 
     public Person(String name, String surname, String bio, Date dateOfBirth, Country country) {
         this.name = name;
@@ -97,11 +98,11 @@ public class Person {
                 '}';
     }
 
-    public Set<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(Set<Movie> movies) {
-        this.movies = movies;
-    }
+//    public Set<Movie> getMovies() {
+//        return movies;
+//    }
+//
+//    public void setMovies(Set<Movie> movies) {
+//        this.movies = movies;
+//    }
 }
