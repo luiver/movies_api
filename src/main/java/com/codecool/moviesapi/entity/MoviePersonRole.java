@@ -1,5 +1,7 @@
 package com.codecool.moviesapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -23,10 +25,16 @@ public class MoviePersonRole implements Serializable {
 
 
     public Person getPerson() {
-        return person;
+        Person p = new Person();
+        p.setId(person.getId());
+        p.setName(person.getName());
+        p.setSurname(person.getSurname());
+        return p;
     }
 
     public Role getRole() {
-        return role;
+        Role r = new Role();
+        r.setName(role.getName());
+        return r;
     }
 }
