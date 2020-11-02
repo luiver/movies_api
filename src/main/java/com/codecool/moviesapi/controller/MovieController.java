@@ -13,7 +13,7 @@ public class MovieController {
     private MovieService movieService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Movie> getAllMovies() {
+    public Iterable<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
 
