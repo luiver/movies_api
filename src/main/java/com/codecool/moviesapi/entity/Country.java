@@ -1,9 +1,7 @@
 package com.codecool.moviesapi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "countries")
 public class Country {
@@ -12,6 +10,9 @@ public class Country {
     private Long countryId;
 
     private String name;
+
+    @ManyToMany(mappedBy = "countries")
+    private Set<Movie> movies;
 
     public Country(String name) {
         this.name = name;
@@ -42,5 +43,13 @@ public class Country {
                 "countryId=" + countryId +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public Set<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(Set<Movie> movies) {
+        this.movies = movies;
     }
 }
