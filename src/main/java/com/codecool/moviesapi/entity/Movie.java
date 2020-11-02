@@ -14,17 +14,17 @@ public class Movie {
     private String title;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_genres",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movie_id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "genre_id",
-                    referencedColumnName = "genre_id"
-            )
-    )
+//    @JoinTable(
+//            name = "movies_genres",
+//            joinColumns = @JoinColumn(
+//                    name = "movie_id",
+//                    referencedColumnName = "movie_id"
+//            ),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "genre_id",
+//                    referencedColumnName = "genre_id"
+//            )
+//    )
     private Set<Genre> genres;
 
     @Column(nullable = false)
