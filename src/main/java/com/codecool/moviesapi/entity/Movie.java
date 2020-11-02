@@ -4,55 +4,33 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "movies")
-public class Movie {
+public class Movie implements Indexable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long movieId;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String title;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_genres",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movieId"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "genre_id",
-                    referencedColumnName = "genreId"
-            )
-    )
     private Set<Genre> genres;
 
     @ManyToMany
-    @JoinTable(
-            name = "movies_countries",
-            joinColumns = @JoinColumn(
-                    name = "movie_id",
-                    referencedColumnName = "movieId"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "country_id",
-                    referencedColumnName = "countryId"
-            )
-    )
     private Set<Country> countries;
 
     @Column(nullable = false)
     private int year;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String description;
 
-    public long getMovieId() {
-        return movieId;
+    public Long getId() {
+        return id;
     }
 
-    public void setMovieId(long movieId) {
-        this.movieId = movieId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -98,8 +76,8 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(long movieId, String title, int year, String description) {
-        this.movieId = movieId;
+    public Movie(Long id, String title, int year, String description) {
+        this.id = id;
         this.title = title;
         this.year = year;
         this.description = description;

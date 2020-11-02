@@ -2,13 +2,12 @@ package com.codecool.moviesapi.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Set;
 
 @Entity(name = "people")
-public class Person {
+public class Person implements Indexable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long personId;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -20,7 +19,6 @@ public class Person {
     private Date dateOfBirth;
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
     private Country country;
 
 //    uncomment for bidirectional relation
@@ -38,12 +36,12 @@ public class Person {
     public Person() {
     }
 
-    public Long getPersonId() {
-        return personId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -89,7 +87,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "personId=" + personId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", bio='" + bio + '\'' +

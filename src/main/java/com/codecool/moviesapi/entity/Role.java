@@ -1,16 +1,14 @@
 package com.codecool.moviesapi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "roles")
-public class Role {
+public class Role implements Indexable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
+    private Long id;
 
+    @Column(nullable = false, length = 50)
     private String name;
 
     public Role(String name) {
@@ -20,12 +18,12 @@ public class Role {
     public Role() {
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Long getId() {
+        return id;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

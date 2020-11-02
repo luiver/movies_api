@@ -1,15 +1,15 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.entity.Movie;
+import com.codecool.moviesapi.entity.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MovieService extends GenericService<Movie> {
+public class GenreService extends GenericService<Genre> {
 
     @Autowired
-    MovieService(CrudRepository<Movie, Long> repository) {
+    GenreService(CrudRepository<Genre, Long> repository) {
         super(repository);
     }
 }

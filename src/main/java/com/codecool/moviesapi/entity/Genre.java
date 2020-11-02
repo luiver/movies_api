@@ -1,14 +1,13 @@
 package com.codecool.moviesapi.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity(name = "genres")
-public class Genre {
+public class Genre implements Indexable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long genreId;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -17,20 +16,20 @@ public class Genre {
 //    @ManyToMany(mappedBy = "genres")
 //    private Set<Movie> movies;
 
-    public Genre(long genreId, String name) {
-        this.genreId = genreId;
+    public Genre(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     public Genre() {
     }
 
-    public long getGenreId() {
-        return genreId;
+    public Long getId() {
+        return id;
     }
 
-    public void setGenreId(long genreId) {
-        this.genreId = genreId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -44,7 +43,7 @@ public class Genre {
     @Override
     public String toString() {
         return "Genre{" +
-                "genreId=" + genreId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }

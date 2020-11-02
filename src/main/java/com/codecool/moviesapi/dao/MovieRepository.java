@@ -6,8 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MovieRepository extends CrudRepository<Movie, Long> {
-
-    Movie findByMovieId(Long id);
-
-    void deleteByMovieId(Long id);
 }
