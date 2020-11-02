@@ -1,14 +1,15 @@
 package com.codecool.moviesapi.controller;
 
+import com.codecool.moviesapi.entity.Indexable;
 import com.codecool.moviesapi.service.GenericService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-public abstract class GenericController<T> {
-    private GenericService service;
+public abstract class GenericController<T extends Indexable> {
+    private final GenericService<T> service;
 
-    GenericController(GenericService service) {
+    GenericController(GenericService<T> service) {
         this.service = service;
     }
 
