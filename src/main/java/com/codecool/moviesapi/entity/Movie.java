@@ -8,7 +8,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long movie_id;
+    private long movieId;
 
     @Column(nullable = false, length = 50)
     private String title;
@@ -61,23 +61,12 @@ public class Movie {
     @Column(nullable = false, length = 100)
     private String description;
 
-
-    public Movie(long movie_id, String title, int year, String description) {
-        this.movie_id = movie_id;
-        this.title = title;
-        this.year = year;
-        this.description = description;
+    public long getMovieId() {
+        return movieId;
     }
 
-    public Movie() {
-    }
-
-    public long getMovie_id() {
-        return movie_id;
-    }
-
-    public void setMovie_id(long movie_id) {
-        this.movie_id = movie_id;
+    public void setMovieId(long movie_id) {
+        this.movieId = movie_id;
     }
 
     public String getTitle() {
@@ -86,6 +75,14 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
 
     public int getYear() {
@@ -102,15 +99,5 @@ public class Movie {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "movie_id=" + movie_id +
-                ", title='" + title + '\'' +
-                ", year=" + year +
-                ", description='" + description + '\'' +
-                '}';
     }
 }
