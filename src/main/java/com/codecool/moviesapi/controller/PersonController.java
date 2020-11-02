@@ -1,44 +1,18 @@
 package com.codecool.moviesapi.controller;
 
 import com.codecool.moviesapi.entity.Person;
-import com.codecool.moviesapi.service.PersonService;
+import com.codecool.moviesapi.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/people")
-public class PersonController {
-    private PersonService personService;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Person> getAllPeople() {
-        return personService.getAll();
-    }
+public class PersonController extends GenericController<Person> {
 
     @Autowired
-    public void setPersonService(PersonService personService) {
-        this.personService = personService;
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Optional<Person> getPersonById(@PathVariable Long id) {
-        return personService.getById(id);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deletePersonById(@PathVariable Long id) {
-        personService.removeById(id);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void updatePerson(@RequestBody Person newPerson, @PathVariable Long id) {
-        personService.update(newPerson, id);
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public void insertPerson(@RequestBody Person person) {
-        personService.insert(person);
+    PersonController(@Qualifier("personService") GenericService<Person> service) {
+        super(service);
     }
 }
