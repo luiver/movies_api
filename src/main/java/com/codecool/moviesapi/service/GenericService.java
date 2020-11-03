@@ -24,8 +24,13 @@ public abstract class GenericService<T> {
     }
 
     public Optional<T> getById(Long id) {
-        log.info(getEntityName() + " getById " + id);
-        return repository.findById(id);
+        Optional<T> optional = repository.findById(id);
+        if (optional.isPresent()){
+            log.info(getEntityName() + " getById " + id);
+        } else{
+            log.info("Error while getById " + getEntityName() + id);
+        }
+        return optional;
     }
 
     public void removeById(Long id) {
