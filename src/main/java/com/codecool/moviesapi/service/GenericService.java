@@ -5,8 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public abstract class GenericService<T extends Indexable> {
-    private final CrudRepository<T, Long> repository;
+public abstract class GenericService<T> {
+    protected final CrudRepository<T, Long> repository;
 
     public GenericService(CrudRepository<T, Long> repository) {
         this.repository = repository;
@@ -25,11 +25,15 @@ public abstract class GenericService<T extends Indexable> {
     }
 
     public void update(T newObject, Long id) {
-        newObject.setId(id);
+        ((Indexable) newObject).setId(id);
         repository.save(newObject);
     }
 
     public void insert(T newObject) {
         repository.save(newObject);
+    }
+
+    public Long getMaxId() {
+        return repository.count();
     }
 }

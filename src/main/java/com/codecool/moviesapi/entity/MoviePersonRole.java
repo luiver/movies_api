@@ -1,24 +1,23 @@
 package com.codecool.moviesapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "movies_people_roles")
-public class MoviePersonRole implements Serializable {
+public class MoviePersonRole {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -36,5 +35,17 @@ public class MoviePersonRole implements Serializable {
         Role r = new Role();
         r.setName(role.getName());
         return r;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
