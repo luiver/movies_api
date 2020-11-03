@@ -1,8 +1,6 @@
 package com.codecool.moviesapi.service;
 
 import com.codecool.moviesapi.entity.Indexable;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,9 +12,6 @@ public abstract class GenericService<T> {
 
     public GenericService(CrudRepository<T, Long> repository) {
         this.repository = repository;
-
-        new FileAppender().setAppend(true);
-        BasicConfigurator.configure();
     }
 
     public Iterable<T> getAll() {
@@ -29,8 +24,13 @@ public abstract class GenericService<T> {
     }
 
     public Optional<T> getById(Long id) {
-        log.info(getEntityName() + " getById " + id);
-        return repository.findById(id);
+        Optional<T> optional = repository.findById(id);
+        if (optional.isPresent()){
+            log.info(getEntityName() + " getById " + id);
+        } else{
+            log.info("Error while getById " + getEntityName() + id);
+        }
+        return optional;
     }
 
     public void removeById(Long id) {
