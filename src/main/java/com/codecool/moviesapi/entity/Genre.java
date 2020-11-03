@@ -3,18 +3,17 @@ package com.codecool.moviesapi.entity;
 import javax.persistence.*;
 
 @Entity(name = "genres")
-public class Genre implements Indexable {
+public class Genre implements Indexable, Archivable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive;
+
     @Column(nullable = false, length = 50)
     private String name;
-
-//    uncomment for bidirectional relation
-//    @ManyToMany(mappedBy = "genres")
-//    private Set<Movie> movies;
 
     public Genre(Long id, String name) {
         this.id = id;
@@ -46,5 +45,15 @@ public class Genre implements Indexable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    @Override
+    public void setIsActive(boolean active) {
+        isActive = active;
     }
 }

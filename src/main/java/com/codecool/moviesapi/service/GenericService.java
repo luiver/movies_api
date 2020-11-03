@@ -1,6 +1,9 @@
 package com.codecool.moviesapi.service;
 
+import com.codecool.moviesapi.dao.FilterActive;
+import com.codecool.moviesapi.entity.Archivable;
 import com.codecool.moviesapi.entity.Indexable;
+import com.codecool.moviesapi.exception.NotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 
@@ -16,7 +19,7 @@ public abstract class GenericService<T> {
 
     public Iterable<T> getAll() {
         log.info(getEntityName() + " getAll");
-        return repository.findAll();
+        return ((FilterActive<T>) repository).findAllByIsActiveTrue();
     }
 
     private String getEntityName() {
@@ -25,17 +28,19 @@ public abstract class GenericService<T> {
 
     public Optional<T> getById(Long id) {
         Optional<T> optional = repository.findById(id);
-        if (optional.isPresent()){
-            log.info(getEntityName() + " getById " + id);
-        } else{
-            log.info("Error while getById " + getEntityName() + id);
-        }
-        return optional;
+        log.info(getEntityName() + " getById " + id);
+        if (optional.isPresent() && ((Archivable) optional.get()).getIsActive()) return optional;
+        throw new NotFoundException();
     }
 
     public void removeById(Long id) {
         log.info(getEntityName() + " removeById " + id);
-        repository.deleteById(id);
+        Optional<T> optionalEntity = repository.findById(id);
+
+        optionalEntity.ifPresent(e -> {
+            ((Archivable) e).setIsActive(false);
+            repository.save(e);
+        });
     }
 
     public void update(T newObject, Long id) {

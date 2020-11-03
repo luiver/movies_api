@@ -5,11 +5,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.persistence.*;
 
 @Entity(name = "roles")
-public class Role implements Indexable {
+public class Role implements Indexable, Archivable{
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -35,5 +38,15 @@ public class Role implements Indexable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    @Override
+    public void setIsActive(boolean active) {
+        isActive = active;
     }
 }

@@ -4,11 +4,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "movies")
-public class Movie implements Indexable {
+public class Movie implements Indexable, Archivable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
     private String title;
@@ -41,8 +44,22 @@ public class Movie implements Indexable {
     )
     private Set<Country> countries;
 
-    @OneToMany(mappedBy="movie")
+    @OneToMany(mappedBy = "movie")
     private Set<MoviePersonRole> people;
+    @Column(nullable = false)
+    private int year;
+    @Column(nullable = false)
+    private String description;
+
+    public Movie() {
+    }
+
+    public Movie(Long id, String title, int year, String description) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.description = description;
+    }
 
     public Set<MoviePersonRole> getPeople() {
         return people;
@@ -51,12 +68,6 @@ public class Movie implements Indexable {
     public void setPeople(Set<MoviePersonRole> people) {
         this.people = people;
     }
-
-    @Column(nullable = false)
-    private int year;
-
-    @Column(nullable = false)
-    private String description;
 
     public Long getId() {
         return id;
@@ -106,13 +117,13 @@ public class Movie implements Indexable {
         this.countries = countries;
     }
 
-    public Movie() {
+    @Override
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public Movie(Long id, String title, int year, String description) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.description = description;
+    @Override
+    public void setIsActive(boolean active) {
+        isActive = active;
     }
 }

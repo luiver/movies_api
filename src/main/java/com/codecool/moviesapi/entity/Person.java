@@ -6,10 +6,13 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity(name = "people")
-public class Person implements Indexable {
+public class Person implements Indexable, Archivable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -26,10 +29,6 @@ public class Person implements Indexable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @ManyToOne
     private Country country;
-
-//    uncomment for bidirectional relation
-//    @ManyToMany(mappedBy = "peoples")
-//    private Set<Movie> movies;
 
     public Person(String name, String surname, String bio, Date dateOfBirth, Country country) {
         this.name = name;
@@ -102,11 +101,13 @@ public class Person implements Indexable {
                 '}';
     }
 
-//    public Set<Movie> getMovies() {
-//        return movies;
-//    }
-//
-//    public void setMovies(Set<Movie> movies) {
-//        this.movies = movies;
-//    }
+    @Override
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    @Override
+    public void setIsActive(boolean active) {
+        isActive = active;
+    }
 }
