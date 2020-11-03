@@ -15,6 +15,6 @@ public class MoviePersonRoleService extends GenericService<MoviePersonRole> {
 
     @Override
     public void update(MoviePersonRole newObject, Long id) {
-        repository.save(newObject);
+        repository.save(newObject); // TODO do something with this
     }
 }

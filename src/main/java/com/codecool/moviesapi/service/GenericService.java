@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public abstract class GenericService<T> {
-    private final CrudRepository<T, Long> repository;
+    protected final CrudRepository<T, Long> repository;
 
     public GenericService(CrudRepository<T, Long> repository) {
         this.repository = repository;

@@ -1,7 +1,7 @@
 package com.codecool.moviesapi.controller;
 
-import com.codecool.moviesapi.dao.MovieRepository;
 import com.codecool.moviesapi.entity.Movie;
+import com.codecool.moviesapi.entity.MoviePersonRole;
 import com.codecool.moviesapi.service.GenericService;
 import com.codecool.moviesapi.service.MoviePersonRoleService;
 import com.codecool.moviesapi.service.MovieService;
@@ -22,10 +22,16 @@ public class MovieController extends GenericController<Movie> {
     }
 
     @Override
-    public void insert(Movie entity) {
-        super.insert(entity);
+    public void insert(Movie movie) {
+        super.insert(movie);
+
         Long count = movieService.getMaxId();
-        moviePersonRoleService.insert();
+        movie.setId(count + 1);
+
+        for (MoviePersonRole moviePersonRole : movie.getPeople()) {
+            moviePersonRole.setMovie(movie);
+            moviePersonRoleService.insert(moviePersonRole);
+        }
     }
 
     @Autowired
