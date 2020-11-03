@@ -1,8 +1,9 @@
 package com.codecool.moviesapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Entity(name = "movies_people_roles")
@@ -36,5 +37,17 @@ public class MoviePersonRole implements Serializable {
         Role r = new Role();
         r.setName(role.getName());
         return r;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
