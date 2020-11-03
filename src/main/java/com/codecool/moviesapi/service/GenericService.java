@@ -29,7 +29,7 @@ public abstract class GenericService<T extends Indexable> {
         repository.save(newObject);
     }
 
-    public void insert(T movie) {
-        repository.save(movie);
+    public void insert(T newObject) {
+        repository.save(newObject);
     }
 }
