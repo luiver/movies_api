@@ -7,6 +7,7 @@ import com.codecool.moviesapi.service.MoviePersonRoleService;
 import com.codecool.moviesapi.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,11 +23,11 @@ public class MovieController extends GenericController<Movie> {
     }
 
     @Override
-    public void insert(Movie movie) {
+    public void insert(@RequestBody Movie movie) {
         super.insert(movie);
 
         Long count = movieService.getMaxId();
-        movie.setId(count + 1);
+        movie.setId(count);
 
         for (MoviePersonRole moviePersonRole : movie.getPeople()) {
             moviePersonRole.setMovie(movie);
