@@ -10,7 +10,7 @@ public class MailingService extends SimpleMailMessage {
     private JavaMailSender emailSender;
     private static final String BOSS_EMAIL = "noreplymoviesapi@gmail.com";
     private static final String MACHINE_EMAIL = "noreplymoviesapi@gmail.com";
-    private static final String ERROR_500 = "500 INTERNAL SERVER ERROR";
+    private static final String ERROR_500 = "500 INTERNAL SERVER ERROR OCCURRED";
 
     public void sendSimpleMessage(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
