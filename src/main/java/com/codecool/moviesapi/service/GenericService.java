@@ -1,8 +1,6 @@
 package com.codecool.moviesapi.service;
 
 import com.codecool.moviesapi.entity.Indexable;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,9 +12,6 @@ public abstract class GenericService<T> {
 
     public GenericService(CrudRepository<T, Long> repository) {
         this.repository = repository;
-
-        new FileAppender().setAppend(true);
-        BasicConfigurator.configure();
     }
 
     public Iterable<T> getAll() {
