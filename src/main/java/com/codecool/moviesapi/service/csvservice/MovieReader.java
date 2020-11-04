@@ -56,18 +56,19 @@ public class MovieReader extends CsvReader {
             moviePersonRole.setMovie(movie);
             moviePersonRole.setPerson(person);
             moviePersonRole.setRole(role);
+            moviePersonRoleSet.add(moviePersonRole);
         }
         movie.setPeople(moviePersonRoleSet);
     }
 
     private void setCountries(String[] countries, Movie movie) {
-            Set<Country> countrySet = new HashSet<>();
-            for (String movieName : countries) {
-                Country country = countryService.getByName(movieName);
-                countrySet.add(country);
-            }
-            movie.setCountries(countrySet);
+        Set<Country> countrySet = new HashSet<>();
+        for (String movieName : countries) {
+            Country country = countryService.getByName(movieName);
+            countrySet.add(country);
         }
+        movie.setCountries(countrySet);
+    }
 
     private void setGenres(String[] genres, Movie movie) {
         Set<Genre> genreSet = new HashSet<>();
