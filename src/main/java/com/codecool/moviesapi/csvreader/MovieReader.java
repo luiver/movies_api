@@ -1,38 +1,36 @@
 package com.codecool.moviesapi.csvreader;
 
 import com.codecool.moviesapi.entity.Country;
+import com.codecool.moviesapi.entity.Movie;
 import com.codecool.moviesapi.entity.Person;
-import com.codecool.moviesapi.service.CountryService;
 import com.codecool.moviesapi.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.sql.Date;
 
 @Component
 public class MovieReader extends CsvReader {
+    GenericService<Movie> movieService;
     GenericService<Person> personService;
     GenericService<Country> countryService;
 
     @Autowired
-    public MovieReader(GenericService<Person> personService, GenericService<Country> countryService) {
+    public MovieReader(GenericService<Person> personService, GenericService<Country> countryService, GenericService<Movie> movieService) {
         this.personService = personService;
         this.countryService = countryService;
+        this.movieService = movieService;
     }
 
     @Override
     protected void makeImports() throws IOException {
         String line;
         String[] elements;
-        Person person;
+        Movie movie;
         while ((line = reader.readLine()) != null) {
             elements = line.split(",");
-            System.out.println(elements[3]);
-            Date date = Date.valueOf(elements[3]);
-            Country country = ((CountryService) countryService).getByName(elements[4]);
-            person = new Person(elements[0], elements[1], elements[2], date, country);
-            personService.insert(person);
+            movie = new Movie(elements[0], Integer.parseInt(elements[1]), elements[2]);
+            movieService.insert(movie);
         }
     }
 }
