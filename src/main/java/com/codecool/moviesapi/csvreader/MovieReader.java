@@ -50,7 +50,7 @@ public class MovieReader extends CsvReader {
         for (String rolePersonId : roles) {
             String roleString = rolePersonId.split(";")[0];
             Long personId = Long.parseLong(rolePersonId.split(";")[1]);
-            Role role = roleService.findByName(roleString);
+            Role role = roleService.getByName(roleString);
             Person person = personService.getById(personId);
             MoviePersonRole moviePersonRole = new MoviePersonRole();
             moviePersonRole.setMovie(movie);
@@ -72,7 +72,7 @@ public class MovieReader extends CsvReader {
     private void setGenres(String[] genres, Movie movie) {
         Set<Genre> genreSet = new HashSet<>();
         for (String genreName : genres) {
-            Genre genre = genreService.findByName(genreName);
+            Genre genre = genreService.getByName(genreName);
             genreSet.add(genre);
         }
         movie.setGenres(genreSet);
