@@ -12,9 +12,9 @@ public class Person implements Indexable, Archivable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "boolean default true")
     @JsonIgnore
-    private boolean isActive;
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
     private String name;

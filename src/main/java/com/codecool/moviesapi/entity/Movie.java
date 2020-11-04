@@ -64,6 +64,12 @@ public class Movie implements Indexable, Archivable {
         this.description = description;
     }
 
+    public Movie(String title, int year, String description) {
+        this.title = title;
+        this.year = year;
+        this.description = description;
+    }
+
     public Set<MoviePersonRole> getPeople() {
         return people;
     }

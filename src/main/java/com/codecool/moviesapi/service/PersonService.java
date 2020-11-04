@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class PersonService extends GenericService<Person> {
 
     @Autowired
-    PersonService(CrudRepository<Person, Long> repository) {
+    public PersonService(CrudRepository<Person, Long> repository) {
         super(repository);
     }
 }

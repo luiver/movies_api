@@ -49,9 +49,9 @@ public abstract class GenericService<T> {
         repository.save(newObject);
     }
 
-    public void insert(T newObject) {
+    public void insert(T object) {
         log.info(getEntityName() + " insert");
-        repository.save(newObject);
+        repository.save(object);
     }
 
     public Long getMaxId() {
