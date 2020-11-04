@@ -15,6 +15,6 @@ public class CountryService extends GenericService<Country> {
     }
 
     public Country getByName(String name) {
-        return ((CountryRepository) repository).findCountryByName(name);
+        return ((CountryRepository) repository).findByName(name);
     }
 }

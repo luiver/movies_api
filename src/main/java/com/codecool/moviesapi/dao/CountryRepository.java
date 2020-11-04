@@ -5,9 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CountryRepository extends FilterActive<Country>, CrudRepository<Country, Long> {
+public interface CountryRepository extends
+        FilterActive<Country>,
+        CrudRepository<Country, Long>,
+        FindableByName<Country> {
+
     @Override
     Iterable<Country> findAllByIsActiveTrue();
 
-    Country findCountryByName(String name);
+    Country findByName(String name);
 }
