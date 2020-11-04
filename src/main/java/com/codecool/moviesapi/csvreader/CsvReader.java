@@ -1,9 +1,5 @@
 package com.codecool.moviesapi.csvreader;
 
-import com.codecool.moviesapi.entity.Country;
-import com.codecool.moviesapi.entity.Person;
-import com.codecool.moviesapi.service.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -30,6 +26,6 @@ public abstract class CsvReader {
         }
     }
 
-    protected abstract void makeImports() throws IOException ;
+    protected abstract void makeImports() throws IOException;
 }
 
