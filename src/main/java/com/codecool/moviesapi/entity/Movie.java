@@ -1,5 +1,7 @@
 package com.codecool.moviesapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class Movie implements Indexable, Archivable {
     private Long id;
 
     @Column(columnDefinition = "boolean default true")
+    @JsonIgnore
     private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
