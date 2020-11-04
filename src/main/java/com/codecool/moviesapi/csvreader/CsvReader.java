@@ -17,10 +17,11 @@ import java.sql.Date;
 @Component
 public class CsvReader {
     BufferedReader reader;
-    PersonService personService;
+    GenericService<Person> personService;
 
     @Autowired
-    public CsvReader(@Qualifier("personService") GenericService<Person> service, String[] args) {
+    public CsvReader(GenericService<Person> personService, String[] args) {
+        this.personService = personService;
         setUp(args);
     }
 
@@ -36,6 +37,11 @@ public class CsvReader {
         try {
             reader = new BufferedReader(new FileReader(args[0]));
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            makeImports();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
