@@ -23,7 +23,7 @@ public class MoviesApiApplication {
         Scanner scan = new Scanner(System.in);
         String s;
         while (isRunning) {
-            s = scan.nextLine();
+            s = scan.nextLine().toLowerCase();
             if (isImport(s) && areThreeArgs(s)) {
                 String[] arguments = s.split(" ");
                 String entity = arguments[1];

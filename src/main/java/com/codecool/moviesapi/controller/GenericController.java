@@ -2,7 +2,10 @@ package com.codecool.moviesapi.controller;
 
 import com.codecool.moviesapi.entity.Indexable;
 import com.codecool.moviesapi.service.GenericService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.http.HttpHeaders;
 
 public abstract class GenericController<T extends Indexable> {
     private final GenericService<T> service;
@@ -21,6 +24,7 @@ public abstract class GenericController<T extends Indexable> {
         return service.getById(id);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable Long id) {
         service.removeById(id);
@@ -31,6 +35,7 @@ public abstract class GenericController<T extends Indexable> {
         service.update(newObject, id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void insert(@RequestBody T entity) {
         service.insert(entity);

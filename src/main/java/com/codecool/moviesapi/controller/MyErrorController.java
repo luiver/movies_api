@@ -37,7 +37,7 @@ public class MyErrorController implements ErrorController {
 
     private void sendMailIfServerError(Object status) {
         int statusCode = Integer.parseInt(status.toString());
-        if (statusCode == HttpStatus.NOT_FOUND.value()) {
+        if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
             String tenLast = loggerService.getTenLastRowsFromLogFile();
             mailingService.sendDefaultSeverErrorMessage(tenLast);
         }
