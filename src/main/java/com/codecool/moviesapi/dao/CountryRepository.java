@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryRepository extends FilterActive<Country>, CrudRepository<Country, Long> {
-    @Override
+
     Iterable<Country> findAllByIsActiveTrue();
 }
