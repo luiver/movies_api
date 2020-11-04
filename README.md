@@ -1,17 +1,19 @@
-REST API FOR MOVIE DATABASE                                                                                                                                                                                                 
+# REST API FOR MOVIE DATABASE                                                                                                                                                                                                 
 _________________________________________________________________________________________________                                                                                                                                                                                                                                                                                                                                                                                
 to run use:                                                                                                                                                                                                 
-"mvn spring-boot:run"
+> mvn spring-boot:run
 _________________________________________________________________________________________________                                                                                                                                                                               
 To import data from .csv file:                                                                                                                                                                                                 
-run using above command, then type IMPORT [entity name] [file name]  
+run using above command, then type: 
+> IMPORT [entity name] [file name]  
 the imported file should be placed under path src/main/resources/csv/                                                                                                                                                                               
-Type EXIT when finished importing  
+When finished importing type:
+> EXIT  
 _________________________________________________________________________________________________
 _________________________________________________________________________________________________
 _________________________________________________________________________________________________
                                                                                                                                                                                
-SUPPORTED ENPOINTS:
+## **SUPPORTED ENPOINTS:**
 - [GET] movies/                                                                                                                                                                                                                                                                                                                                                              
   - [GET] movies/{id}
 - [POST] movies/                                                                                                                                                                                                                                                                                                                                                              
@@ -41,3 +43,4 @@ ________________________________________________________________________________
 - [POST] genres/                                                                                                                                                                                                                                                                                                                                                              
 - [PUT] genres/{id}                                                                                                                                                                                                                                                                                                                                                              
 - [DELETE] genres/{id}                                                                                                                                                                             
+
