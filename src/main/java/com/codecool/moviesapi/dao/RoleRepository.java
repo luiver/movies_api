@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RoleRepository extends FilterActive<Role>, CrudRepository<Role, Long> {
-    @Override
+
     Iterable<Role> findAllByIsActiveTrue();
 }
