@@ -1,5 +1,6 @@
 package com.codecool.moviesapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ public class Person implements Indexable, Archivable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @Column(columnDefinition = "boolean default true")
     private boolean isActive = true;
 

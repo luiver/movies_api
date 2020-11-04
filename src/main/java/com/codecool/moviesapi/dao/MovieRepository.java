@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MovieRepository extends FilterActive<Movie>, CrudRepository<Movie, Long> {
-    @Override
+
     Iterable<Movie> findAllByIsActiveTrue();
 }

@@ -1,17 +1,19 @@
 package com.codecool.moviesapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 
 @Entity(name = "roles")
-public class Role implements Indexable, Archivable{
+public class Role implements Indexable, Archivable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(columnDefinition = "boolean default true")
+    @JsonIgnore
     private boolean isActive;
 
     @Column(nullable = false, length = 50)

@@ -1,5 +1,7 @@
 package com.codecool.moviesapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "countries")
@@ -9,6 +11,7 @@ public class Country implements Indexable, Archivable {
     private Long id;
 
     @Column(columnDefinition = "boolean default true")
+    @JsonIgnore
     private boolean isActive;
 
     @Column(nullable = false, length = 50)

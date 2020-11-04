@@ -5,7 +5,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends FilterActive<Role>, CrudRepository<Role, Long> {
-    @Override
+public interface RoleRepository extends
+        FilterActive<Role>,
+        CrudRepository<Role, Long>,
+        FindableByName<Role> {
+
     Iterable<Role> findAllByIsActiveTrue();
+
+    Role findByName(String name);
 }

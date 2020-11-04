@@ -10,7 +10,6 @@ public interface CountryRepository extends
         CrudRepository<Country, Long>,
         FindableByName<Country> {
 
-    @Override
     Iterable<Country> findAllByIsActiveTrue();
 
     Country findByName(String name);
