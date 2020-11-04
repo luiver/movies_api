@@ -12,5 +12,5 @@ public interface CountryRepository extends
 
     Iterable<Country> findAllByIsActiveTrue();
 
-    Country findByName(String name);
+    Country findByNameIgnoreCase(String name);
 }

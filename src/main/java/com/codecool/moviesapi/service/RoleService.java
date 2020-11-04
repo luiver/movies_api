@@ -1,8 +1,6 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.dao.CountryRepository;
 import com.codecool.moviesapi.dao.RoleRepository;
-import com.codecool.moviesapi.entity.Country;
 import com.codecool.moviesapi.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -17,6 +15,6 @@ public class RoleService extends GenericService<Role> {
     }
 
     public Role getByName(String name) {
-        return ((RoleRepository) repository).findByName(name);
+        return ((RoleRepository) repository).findByNameIgnoreCase(name);
     }
 }
