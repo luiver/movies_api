@@ -26,10 +26,10 @@ public abstract class GenericService<T> {
         return this.getClass().getSimpleName().replace("Service", "");
     }
 
-    public Optional<T> getById(Long id) {
+    public T getById(Long id) {
         Optional<T> optional = repository.findById(id);
         log.info(getEntityName() + " getById " + id);
-        if (optional.isPresent() && ((Archivable) optional.get()).getIsActive()) return optional;
+        if (optional.isPresent() && ((Archivable) optional.get()).getIsActive()) return optional.get();
         throw new NotFoundException();
     }
 
