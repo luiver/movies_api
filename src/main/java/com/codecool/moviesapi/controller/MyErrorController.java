@@ -24,23 +24,22 @@ public class MyErrorController implements ErrorController {
     @ResponseBody
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        String message;
+        String message = "unknown error";
 
         if (status != null) {
             String error = status.toString();
             message = error + " " + HttpStatus.valueOf(Integer.parseInt(error)).getReasonPhrase();
             log.info(message);
             sendMailIfServerError(status);
-            return message;
         }
-        message = "unknown error";
         return message;
     }
 
     private void sendMailIfServerError(Object status) {
         int statusCode = Integer.parseInt(status.toString());
         if (statusCode == HttpStatus.NOT_FOUND.value()) {
-            mailingService.sendDefaultSeverErrorMessage(loggerService.getTenLastRowsFromLogFile());
+            String tenLast = loggerService.getTenLastRowsFromLogFile();
+            mailingService.sendDefaultSeverErrorMessage(tenLast);
         }
     }
 
