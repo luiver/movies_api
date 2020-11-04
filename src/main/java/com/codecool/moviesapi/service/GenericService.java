@@ -35,16 +35,15 @@ public abstract class GenericService<T> {
 
     public void removeById(Long id) {
         log.info(getEntityName() + " removeById " + id);
-        Optional<T> optionalEntity = repository.findById(id);
+        T t = getById(id);
 
-        optionalEntity.ifPresent(e -> {
-            ((Archivable) e).setIsActive(false);
-            repository.save(e);
-        });
+        ((Archivable) t).setIsActive(false);
+        repository.save(t);
     }
 
     public void update(T newObject, Long id) {
         log.info(getEntityName() + " update " + id);
+        getById(id);
         ((Indexable) newObject).setId(id);
         repository.save(newObject);
     }
