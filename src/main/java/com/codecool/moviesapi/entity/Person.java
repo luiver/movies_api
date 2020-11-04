@@ -12,7 +12,7 @@ public class Person implements Indexable, Archivable {
     private Long id;
 
     @Column(columnDefinition = "boolean default true")
-    private boolean isActive;
+    private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
     private String name;
