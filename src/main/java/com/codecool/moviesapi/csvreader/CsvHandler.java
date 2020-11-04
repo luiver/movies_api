@@ -22,6 +22,8 @@ public class CsvHandler {
     }
 
     public void importFromFile(String entity, String fileName) {
+        System.out.println("\n\n\nTo import data to database from .csv file type: IMPORT [entity name] [file name]");
+        System.out.println("To finish importing type: EXIT");
         try {
             bufferedReader = new BufferedReader(new FileReader(path + fileName));
             setCsvReader(entity);
@@ -31,7 +33,7 @@ public class CsvHandler {
         }
         try {
             csvReader.makeImports();
-            System.out.println("Import successful");
+            System.out.println("\nImport successful\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
