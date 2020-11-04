@@ -14,10 +14,11 @@ import java.io.IOException;
 @Component
 public abstract class CsvReader {
     BufferedReader reader;
+    String path = "src/main/resources/csv/";
 
-    public void setUp(String fileName) {
+    public void importFromFile(String fileName) {
         try {
-            reader = new BufferedReader(new FileReader(fileName));
+            reader = new BufferedReader(new FileReader(path + fileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

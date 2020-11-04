@@ -4,7 +4,6 @@ import com.codecool.moviesapi.csvreader.CsvReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 import java.util.Scanner;
 
@@ -26,12 +25,13 @@ public class MoviesApiApplication {
         while (isRunning) {
             s = scan.nextLine();
             if (isImport(s)) {
-                csvReader.setUp(getFileName(s));
+                csvReader.importFromFile(getFileName(s));
             }
             if (s.equals("exit")){
                 isRunning = false;
             }
         }
+        System.out.println("Finished importing");
     }
 
     private static String getFileName(String s) {
