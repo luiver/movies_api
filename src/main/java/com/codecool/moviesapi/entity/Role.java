@@ -51,4 +51,12 @@ public class Role implements Indexable, Archivable {
     public void setIsActive(boolean active) {
         isActive = active;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
