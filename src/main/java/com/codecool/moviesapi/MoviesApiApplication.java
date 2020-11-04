@@ -1,6 +1,6 @@
 package com.codecool.moviesapi;
 
-import com.codecool.moviesapi.csvreader.CsvHandler;
+import com.codecool.moviesapi.service.csvservice.CsvHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
