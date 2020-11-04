@@ -1,4 +1,4 @@
-package com.codecool.moviesapi.csvreader;
+package com.codecool.moviesapi.service.csvservice;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.codecool.moviesapi.csvreader;
+package com.codecool.moviesapi.service.csvservice;
 
 import com.codecool.moviesapi.entity.Country;
 import com.codecool.moviesapi.entity.Person;
