@@ -1,7 +1,6 @@
 package com.codecool.moviesapi.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity(name = "movies_people_roles")
 public class MoviePersonRole {
