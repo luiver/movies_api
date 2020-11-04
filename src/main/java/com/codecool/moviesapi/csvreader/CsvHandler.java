@@ -41,6 +41,9 @@ public class CsvHandler {
         switch (entity) {
             case "people":
                 csvReader = (CsvReader) context.getBean("peopleReader");
+                break;
+            case "movies":
+                csvReader = (CsvReader) context.getBean("movieReader");
         }
     }
 }

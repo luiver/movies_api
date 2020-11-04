@@ -28,7 +28,6 @@ public class PeopleReader extends CsvReader {
         Person person;
         while ((line = reader.readLine()) != null) {
             elements = line.split(",");
-            System.out.println(elements[3]);
             Date date = Date.valueOf(elements[3]);
             Country country = ((CountryService) countryService).getByName(elements[4]);
             person = new Person(elements[0], elements[1], elements[2], date, country);
