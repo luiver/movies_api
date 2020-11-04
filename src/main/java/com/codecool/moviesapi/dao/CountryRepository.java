@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface CountryRepository extends FilterActive<Country>, CrudRepository<Country, Long> {
     @Override
     Iterable<Country> findAllByIsActiveTrue();
+
+    Country findCountryByName(String name);
 }
