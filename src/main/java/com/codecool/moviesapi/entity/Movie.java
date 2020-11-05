@@ -135,4 +135,17 @@ public class Movie implements Indexable, Archivable {
     public void setIsActive(boolean active) {
         isActive = active;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", genres=" + genres +
+                ", countries=" + countries +
+                ", people=" + people +
+                ", year=" + year +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

@@ -12,5 +12,5 @@ public interface RoleRepository extends
 
     Iterable<Role> findAllByIsActiveTrue();
 
-    Role findByName(String name);
+    Role findByNameIgnoreCase(String name);
 }

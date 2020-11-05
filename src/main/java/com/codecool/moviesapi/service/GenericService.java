@@ -49,7 +49,7 @@ public abstract class GenericService<T> {
     }
 
     public void insert(T object) {
-        log.info(getEntityName() + " insert");
+        log.info(getEntityName() + " insert " + "object data: " + object.toString());
         repository.save(object);
     }
 

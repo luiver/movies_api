@@ -1,6 +1,7 @@
 package com.codecool.moviesapi.dao;
 
 import com.codecool.moviesapi.entity.Genre;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +13,5 @@ public interface GenreRepository extends
 
     Iterable<Genre> findAllByIsActiveTrue();
 
-    Genre findByName(String name);
+    Genre findByNameIgnoreCase(String name);
 }
