@@ -13,7 +13,7 @@ public class Genre implements Indexable, Archivable, Validable {
 
     @Column(columnDefinition = "boolean default true")
     @JsonIgnore
-    private boolean isActive;
+    private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
     private String name;

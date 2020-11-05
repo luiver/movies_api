@@ -51,9 +51,10 @@ public abstract class GenericService<T> {
     }
 
     public void insert(T object) {
+        ((Indexable) object).setId(null);
         log.info(getEntityName() + " insert " + "object data: " + object.toString());
         if (!((Validable) object).isValid()) {
-            throw new BadRequestException();
+            throw new BadRequestException("Insertion Failed");
         }
         repository.save(object);
     }
