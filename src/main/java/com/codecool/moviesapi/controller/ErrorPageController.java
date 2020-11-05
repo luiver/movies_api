@@ -15,10 +15,16 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class MyErrorController implements ErrorController {
+public class ErrorPageController implements ErrorController {
     static Logger log = Logger.getLogger(GenericService.class.getName());
     MailingService mailingService;
     LoggerService loggerService;
+
+    @Autowired
+    public ErrorPageController(MailingService mailingService, LoggerService loggerService) {
+        this.mailingService = mailingService;
+        this.loggerService = loggerService;
+    }
 
     @RequestMapping("/error")
     @ResponseBody
@@ -46,15 +52,5 @@ public class MyErrorController implements ErrorController {
     @Override
     public String getErrorPath() {
         return null;
-    }
-
-    @Autowired
-    public void setMailingService(MailingService mailingService) {
-        this.mailingService = mailingService;
-    }
-
-    @Autowired
-    public void setLoggerService(LoggerService loggerService) {
-        this.loggerService = loggerService;
     }
 }

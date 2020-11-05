@@ -1,9 +1,8 @@
 package com.codecool.moviesapi.controller;
 
 import com.codecool.moviesapi.model.Role;
-import com.codecool.moviesapi.service.GenericService;
+import com.codecool.moviesapi.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoleController extends GenericController<Role> {
 
     @Autowired
-    RoleController(@Qualifier("roleService") GenericService<Role> service) {
+    RoleController(RoleService service) {
         super(service);
     }
 }

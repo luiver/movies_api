@@ -1,9 +1,8 @@
 package com.codecool.moviesapi.controller;
 
 import com.codecool.moviesapi.model.Person;
-import com.codecool.moviesapi.service.GenericService;
+import com.codecool.moviesapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonController extends GenericController<Person> {
 
     @Autowired
-    PersonController(@Qualifier("personService") GenericService<Person> service) {
+    PersonController(PersonService service) {
         super(service);
     }
 }

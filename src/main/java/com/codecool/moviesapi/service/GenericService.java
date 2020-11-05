@@ -1,9 +1,9 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.repository.FilterActive;
+import com.codecool.moviesapi.exception.NotFoundException;
 import com.codecool.moviesapi.model.Archivable;
 import com.codecool.moviesapi.model.Indexable;
-import com.codecool.moviesapi.exception.NotFoundException;
+import com.codecool.moviesapi.repository.FilterActive;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 
