@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryRepository extends
-        FilterActive<Country>,
-        CrudRepository<Country, Long>,
+        FilterActiveCrudRepository<Country>,
         FindableByName<Country> {
 
     Iterable<Country> findAllByIsActiveTrue();

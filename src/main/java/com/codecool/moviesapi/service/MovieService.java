@@ -2,17 +2,18 @@ package com.codecool.moviesapi.service;
 
 import com.codecool.moviesapi.model.Movie;
 import com.codecool.moviesapi.model.MoviePersonRole;
+import com.codecool.moviesapi.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MovieService extends GenericService<Movie> {
-    private MoviePersonRoleService moviePersonRoleService;
+    private final MoviePersonRoleService moviePersonRoleService;
 
     @Autowired
-    MovieService(CrudRepository<Movie, Long> repository) {
+    MovieService(MovieRepository repository, MoviePersonRoleService moviePersonRoleService) {
         super(repository);
+        this.moviePersonRoleService = moviePersonRoleService;
     }
 
     @Override
@@ -26,10 +27,5 @@ public class MovieService extends GenericService<Movie> {
             moviePersonRole.setMovie(movie);
             moviePersonRoleService.insert(moviePersonRole);
         }
-    }
-
-    @Autowired
-    public void setMoviePersonRoleService(MoviePersonRoleService moviePersonRoleService) {
-        this.moviePersonRoleService = moviePersonRoleService;
     }
 }

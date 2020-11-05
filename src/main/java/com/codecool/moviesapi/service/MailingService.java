@@ -7,10 +7,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MailingService extends SimpleMailMessage {
-    private JavaMailSender emailSender;
     private static final String BOSS_EMAIL = "noreplymoviesapi@gmail.com";
     private static final String MACHINE_EMAIL = "noreplymoviesapi@gmail.com";
     private static final String ERROR_500 = "500 INTERNAL SERVER ERROR OCCURRED";
+    private final JavaMailSender emailSender;
+
+    @Autowired
+    public MailingService(JavaMailSender emailSender) {
+        this.emailSender = emailSender;
+    }
 
     public void sendSimpleMessage(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -21,12 +26,7 @@ public class MailingService extends SimpleMailMessage {
         emailSender.send(message);
     }
 
-    public void sendDefaultSeverErrorMessage(String text){
+    public void sendDefaultSeverErrorMessage(String text) {
         sendSimpleMessage(BOSS_EMAIL, ERROR_500, text);
-    }
-
-    @Autowired
-    public void setEmailSender(JavaMailSender emailSender) {
-        this.emailSender = emailSender;
     }
 }

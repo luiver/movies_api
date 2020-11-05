@@ -1,13 +1,13 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.model.Validable;
-import com.codecool.moviesapi.repository.FilterActive;
+import com.codecool.moviesapi.exception.BadRequestException;
+import com.codecool.moviesapi.exception.NotFoundException;
 import com.codecool.moviesapi.model.Archivable;
 import com.codecool.moviesapi.model.Indexable;
-import com.codecool.moviesapi.exception.NotFoundException;
+import com.codecool.moviesapi.model.Validable;
+import com.codecool.moviesapi.repository.FilterActiveCrudRepository;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ public abstract class GenericService<T> {
 
     public Iterable<T> getAll() {
         log.info(getEntityName() + " getAll");
-        return ((FilterActive<T>) repository).findAllByIsActiveTrue();
+        return ((FilterActiveCrudRepository<T>) repository).findAllByIsActiveTrue();
     }
 
     private String getEntityName() {
@@ -52,8 +52,8 @@ public abstract class GenericService<T> {
 
     public void insert(T object) {
         log.info(getEntityName() + " insert " + "object data: " + object.toString());
-        if (!((Validable) object).isValid()){
-            throw new NotFoundException();
+        if (!((Validable) object).isValid()) {
+            throw new BadRequestException();
         }
         repository.save(object);
     }

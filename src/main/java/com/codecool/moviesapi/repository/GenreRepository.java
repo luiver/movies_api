@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GenreRepository extends
-        FilterActive<Genre>,
-        CrudRepository<Genre, Long>,
+        FilterActiveCrudRepository<Genre>,
         FindableByName<Genre> {
 
     Iterable<Genre> findAllByIsActiveTrue();
