@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.persistence.*;
 
 @Entity(name = "roles")
-public class Role implements Indexable, Archivable {
+public class Role implements Indexable, Archivable, Validable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,7 @@ public class Role implements Indexable, Archivable {
 
     @Column(columnDefinition = "boolean default true")
     @JsonIgnore
-    private boolean isActive;
+    private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -58,5 +58,10 @@ public class Role implements Indexable, Archivable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean isValid() {
+        return !(name == null);
     }
 }

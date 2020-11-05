@@ -1,9 +1,11 @@
 package com.codecool.moviesapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "movies_people_roles")
-public class MoviePersonRole {
+public class MoviePersonRole implements Indexable, Validable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,11 +54,27 @@ public class MoviePersonRole {
         this.role = role;
     }
 
+    @JsonIgnore
     public Integer getMovieYear() {
         return movie.getYear();
     }
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id =id;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public boolean isValid() {
+        return true;
     }
 }

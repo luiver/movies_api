@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity(name = "countries")
-public class Country implements Indexable, Archivable {
+public class Country implements Indexable, Archivable, Validable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(columnDefinition = "boolean default true")
     @JsonIgnore
-    private boolean isActive;
+    private boolean isActive = true;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -56,5 +56,10 @@ public class Country implements Indexable, Archivable {
     @Override
     public void setIsActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public boolean isValid() {
+        return !(name == null);
     }
 }

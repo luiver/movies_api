@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity(name = "people")
-public class Person implements Indexable, Archivable {
+public class Person implements Indexable, Archivable, Validable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -111,5 +111,15 @@ public class Person implements Indexable, Archivable {
     @Override
     public void setIsActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public boolean isValid() {
+        return !((name == null) || (surname == null) || isDateInTheFuture(dateOfBirth));
+    }
+
+    private boolean isDateInTheFuture(Date date) {
+        Date now = new Date(new java.util.Date().getTime());
+        return date.after(now);
     }
 }
