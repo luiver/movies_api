@@ -1,6 +1,6 @@
 package com.codecool.moviesapi.controller;
 
-import com.codecool.moviesapi.entity.*;
+import com.codecool.moviesapi.model.Movie;
 import com.codecool.moviesapi.service.GenericService;
 import com.codecool.moviesapi.service.csvservice.CsvHandler;
 import org.junit.jupiter.api.Test;
@@ -12,10 +12,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -34,13 +30,14 @@ class MovieControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private @Qualifier("movieService") GenericService<Movie> movieGenericService;
+    private @Qualifier("movieService")
+    GenericService<Movie> movieGenericService;
 
     @Test
     public void getMovieById() throws Exception {
         Movie movie = new Movie(1L, "gary move out", 1989,
                 "picture of man exploring the wild rivers and documenting life of alligators");
-        
+
         when(movieGenericService.getById(anyLong())).thenReturn(movie);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/movies/1"))

@@ -1,7 +1,7 @@
 package com.codecool.moviesapi.controller;
 
-import com.codecool.moviesapi.entity.Country;
-import com.codecool.moviesapi.entity.Person;
+import com.codecool.moviesapi.model.Country;
+import com.codecool.moviesapi.model.Person;
 import com.codecool.moviesapi.service.GenericService;
 import com.codecool.moviesapi.service.csvservice.CsvHandler;
 import org.junit.jupiter.api.Test;

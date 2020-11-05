@@ -1,11 +1,13 @@
-package com.codecool.moviesapi.entity;
+package com.codecool.moviesapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 
-@Entity(name = "countries")
-public class Country implements Indexable, Archivable {
+@Entity(name = "roles")
+public class Role implements Indexable, Archivable {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,11 +19,11 @@ public class Country implements Indexable, Archivable {
     @Column(nullable = false, length = 50)
     private String name;
 
-    public Country(String name) {
+    public Role(String name) {
         this.name = name;
     }
 
-    public Country() {
+    public Role() {
     }
 
     public Long getId() {
@@ -41,14 +43,6 @@ public class Country implements Indexable, Archivable {
     }
 
     @Override
-    public String toString() {
-        return "Country{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean getIsActive() {
         return isActive;
     }
@@ -56,5 +50,13 @@ public class Country implements Indexable, Archivable {
     @Override
     public void setIsActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

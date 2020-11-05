@@ -1,8 +1,8 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.dao.FilterActive;
-import com.codecool.moviesapi.entity.Archivable;
-import com.codecool.moviesapi.entity.Indexable;
+import com.codecool.moviesapi.repository.FilterActive;
+import com.codecool.moviesapi.model.Archivable;
+import com.codecool.moviesapi.model.Indexable;
 import com.codecool.moviesapi.exception.NotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;

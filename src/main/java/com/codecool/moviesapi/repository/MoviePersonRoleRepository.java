@@ -1,6 +1,6 @@
-package com.codecool.moviesapi.dao;
+package com.codecool.moviesapi.repository;
 
-import com.codecool.moviesapi.entity.MoviePersonRole;
+import com.codecool.moviesapi.model.MoviePersonRole;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

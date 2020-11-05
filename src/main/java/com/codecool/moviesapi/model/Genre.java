@@ -1,13 +1,12 @@
-package com.codecool.moviesapi.entity;
+package com.codecool.moviesapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 
-@Entity(name = "roles")
-public class Role implements Indexable, Archivable {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity(name = "genres")
+public class Genre implements Indexable, Archivable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,11 +18,12 @@ public class Role implements Indexable, Archivable {
     @Column(nullable = false, length = 50)
     private String name;
 
-    public Role(String name) {
+    public Genre(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Role() {
+    public Genre() {
     }
 
     public Long getId() {
@@ -43,6 +43,14 @@ public class Role implements Indexable, Archivable {
     }
 
     @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean getIsActive() {
         return isActive;
     }
@@ -50,13 +58,5 @@ public class Role implements Indexable, Archivable {
     @Override
     public void setIsActive(boolean active) {
         isActive = active;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

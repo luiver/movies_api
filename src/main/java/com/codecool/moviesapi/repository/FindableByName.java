@@ -1,4 +1,4 @@
-package com.codecool.moviesapi.dao;
+package com.codecool.moviesapi.repository;
 
 public interface FindableByName<T> {
 
