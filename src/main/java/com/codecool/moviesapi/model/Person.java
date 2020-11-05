@@ -115,6 +115,11 @@ public class Person implements Indexable, Archivable, Validable {
 
     @Override
     public boolean isValid() {
-        return !((name == null) || (surname == null) || dateOfBirth == null);
+        return !((name == null) || (surname == null) || isDateInTheFuture(dateOfBirth));
+    }
+
+    private boolean isDateInTheFuture(Date date) {
+        Date now = new Date(new java.util.Date().getTime());
+        return date.after(now);
     }
 }
