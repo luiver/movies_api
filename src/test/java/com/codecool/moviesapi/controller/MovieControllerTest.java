@@ -1,6 +1,6 @@
 package com.codecool.moviesapi.controller;
 
-import com.codecool.moviesapi.entity.Country;
+import com.codecool.moviesapi.entity.*;
 import com.codecool.moviesapi.service.GenericService;
 import com.codecool.moviesapi.service.csvservice.CsvHandler;
 import org.junit.jupiter.api.Test;
@@ -12,39 +12,42 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(CountryController.class)
-class CountryControllerTest {
+@WebMvcTest(MovieController.class)
+class MovieControllerTest {
 
     @MockBean
     private CsvHandler csvHandler;
 
     @Autowired
-    private CountryController countryController;
+    private MovieController movieController;
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private @Qualifier("countryService") GenericService<Country> countryGenericService;
+    private @Qualifier("movieService") GenericService<Movie> movieGenericService;
 
     @Test
-    public void getCountryById() throws Exception {
-        Country country = new Country();
-        country.setId(12L);
-        country.setName("Poland");
-        country.setIsActive(true);
+    public void getMovieById() throws Exception {
+        Movie movie = new Movie(1L, "gary move out", 1989,
+                "picture of man exploring the wild rivers and documenting life of alligators");
+        
+        when(movieGenericService.getById(anyLong())).thenReturn(movie);
 
-        when(countryGenericService.getById(anyLong())).thenReturn(country);
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/countries/12"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/movies/1"))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("id").value(12L))
-                .andExpect(MockMvcResultMatchers.jsonPath("name").value("Poland"))
+                .andExpect(MockMvcResultMatchers.jsonPath("title").value("gary move out"))
+                .andExpect(MockMvcResultMatchers.jsonPath("year").value("1989"))
                 .andExpect(status().isOk());
     }
+
 }
