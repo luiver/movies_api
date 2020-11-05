@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity(name = "genres")
-public class Genre implements Indexable, Archivable {
+public class Genre implements Indexable, Archivable, Validable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +58,10 @@ public class Genre implements Indexable, Archivable {
     @Override
     public void setIsActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public boolean isValid() {
+        return !(name == null);
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "movies")
-public class Movie implements Indexable, Archivable {
+public class Movie implements Indexable, Archivable, Validable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,8 +50,8 @@ public class Movie implements Indexable, Archivable {
     @OneToMany(mappedBy = "movie")
     private Set<MoviePersonRole> people;
     @Column(nullable = false)
-    private int year;
-    @Column(nullable = false)
+    private Integer year;
+    @Column()
     private String description;
 
     public Movie() {
@@ -147,5 +147,10 @@ public class Movie implements Indexable, Archivable {
                 ", year=" + year +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean isValid() {
+        return !((title == null) || (year == null));
     }
 }
