@@ -21,6 +21,14 @@ public class MoviePersonRole {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public MoviePersonRole(Long id, Movie movie, Person person, Role role) {
+        this.id = id;
+        this.movie = movie;
+        this.person = person;
+        this.role = role;
+    }
+
+    public MoviePersonRole() {}
 
     public Person getPerson() {
         Person p = new Person();
@@ -42,6 +50,10 @@ public class MoviePersonRole {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Integer getMovieYear() {
+        return movie.getYear();
     }
 
     public void setMovie(Movie movie) {
