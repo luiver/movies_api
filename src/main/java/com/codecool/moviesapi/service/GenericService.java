@@ -1,11 +1,13 @@
 package com.codecool.moviesapi.service;
 
+import com.codecool.moviesapi.model.Validable;
 import com.codecool.moviesapi.repository.FilterActive;
 import com.codecool.moviesapi.model.Archivable;
 import com.codecool.moviesapi.model.Indexable;
 import com.codecool.moviesapi.exception.NotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Optional;
 
@@ -50,6 +52,9 @@ public abstract class GenericService<T> {
 
     public void insert(T object) {
         log.info(getEntityName() + " insert " + "object data: " + object.toString());
+        if (!((Validable) object).isValid()){
+            throw new NotFoundException();
+        }
         repository.save(object);
     }
 
