@@ -1,7 +1,10 @@
 package com.codecool.moviesapi.model;
 
+import com.codecool.moviesapi.helper.DateDeserializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -25,7 +28,9 @@ public class Person implements Indexable, Archivable, Validable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String bio;
 
+    @JsonFormat(pattern="yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonDeserialize(using = DateDeserializer.class)
     private Date dateOfBirth;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
