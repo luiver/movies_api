@@ -5,8 +5,6 @@ import com.codecool.moviesapi.service.GenericService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpHeaders;
-
 public abstract class GenericController<T extends Indexable> {
     private final GenericService<T> service;
 
