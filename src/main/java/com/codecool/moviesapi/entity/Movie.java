@@ -50,21 +50,21 @@ public class Movie implements Indexable, Archivable {
     @OneToMany(mappedBy = "movie")
     private Set<MoviePersonRole> people;
     @Column(nullable = false)
-    private int year;
+    private Integer year;
     @Column(nullable = false)
     private String description;
 
     public Movie() {
     }
 
-    public Movie(Long id, String title, int year, String description) {
+    public Movie(Long id, String title, Integer year, String description) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.description = description;
     }
 
-    public Movie(String title, int year, String description) {
+    public Movie(String title, Integer year, String description) {
         this.title = title;
         this.year = year;
         this.description = description;
@@ -102,11 +102,11 @@ public class Movie implements Indexable, Archivable {
         this.genres = genres;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
