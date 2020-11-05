@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class MyErrorController implements ErrorController {
+    static Logger log = Logger.getLogger(GenericService.class.getName());
     MailingService mailingService;
     LoggerService loggerService;
-    static Logger log = Logger.getLogger(GenericService.class.getName());
 
     @RequestMapping("/error")
     @ResponseBody
