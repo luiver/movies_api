@@ -1,6 +1,7 @@
 package com.codecool.moviesapi.controller;
 
 import com.codecool.moviesapi.model.Country;
+import com.codecool.moviesapi.service.CountryService;
 import com.codecool.moviesapi.service.GenericService;
 import com.codecool.moviesapi.service.csvservice.CsvHandler;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class CountryControllerTest {
 
     @MockBean
     private @Qualifier("countryService")
-    GenericService<Country> countryGenericService;
+    CountryService countryGenericService;
 
     @Test
     public void getCountryById() throws Exception {

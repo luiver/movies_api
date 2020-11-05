@@ -2,6 +2,7 @@ package com.codecool.moviesapi.controller;
 
 import com.codecool.moviesapi.model.Movie;
 import com.codecool.moviesapi.service.GenericService;
+import com.codecool.moviesapi.service.MovieService;
 import com.codecool.moviesapi.service.csvservice.CsvHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ class MovieControllerTest {
 
     @MockBean
     private @Qualifier("movieService")
-    GenericService<Movie> movieGenericService;
+    MovieService movieGenericService;
 
     @Test
     public void getMovieById() throws Exception {
