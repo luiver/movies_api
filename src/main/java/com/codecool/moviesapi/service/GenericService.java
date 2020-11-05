@@ -3,7 +3,7 @@ package com.codecool.moviesapi.service;
 import com.codecool.moviesapi.exception.NotFoundException;
 import com.codecool.moviesapi.model.Archivable;
 import com.codecool.moviesapi.model.Indexable;
-import com.codecool.moviesapi.repository.FilterActive;
+import com.codecool.moviesapi.repository.FilterActiveCrudRepository;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 
@@ -19,7 +19,7 @@ public abstract class GenericService<T> {
 
     public Iterable<T> getAll() {
         log.info(getEntityName() + " getAll");
-        return ((FilterActive<T>) repository).findAllByIsActiveTrue();
+        return ((FilterActiveCrudRepository<T>) repository).findAllByIsActiveTrue();
     }
 
     private String getEntityName() {

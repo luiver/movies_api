@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends FilterActive<Person>, CrudRepository<Person, Long> {
+public interface PersonRepository extends FilterActiveCrudRepository<Person> {
 
     Iterable<Person> findAllByIsActiveTrue();
 }
