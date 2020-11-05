@@ -69,6 +69,7 @@ public class MoviePersonRole implements Indexable, Validable {
     }
 
     @Override
+    @JsonIgnore
     public Long getId() {
         return id;
     }
