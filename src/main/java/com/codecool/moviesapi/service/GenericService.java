@@ -1,8 +1,10 @@
 package com.codecool.moviesapi.service;
 
+import com.codecool.moviesapi.exception.BadRequestException;
 import com.codecool.moviesapi.exception.NotFoundException;
 import com.codecool.moviesapi.model.Archivable;
 import com.codecool.moviesapi.model.Indexable;
+import com.codecool.moviesapi.model.Validable;
 import com.codecool.moviesapi.repository.FilterActiveCrudRepository;
 import org.apache.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
@@ -50,7 +52,11 @@ public abstract class GenericService<T> {
     }
 
     public void insert(T object) {
+        ((Indexable) object).setId(null);
         log.info(getEntityName() + " insert " + "object data: " + object.toString());
+        if (!((Validable) object).isValid()) {
+            throw new BadRequestException("Insertion Failed");
+        }
         repository.save(object);
     }
 
