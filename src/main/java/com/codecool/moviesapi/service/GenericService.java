@@ -43,7 +43,8 @@ public abstract class GenericService<T> {
 
     public void update(T newObject, Long id) {
         log.info(getEntityName() + " update " + id);
-        getById(id);
+        if (!repository.existsById(id)) throw new NotFoundException();
+
         ((Indexable) newObject).setId(id);
         repository.save(newObject);
     }
