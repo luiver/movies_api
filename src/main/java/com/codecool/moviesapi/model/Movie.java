@@ -3,6 +3,7 @@ package com.codecool.moviesapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.Year;
 import java.util.Set;
 
 @Entity(name = "movies")
@@ -57,14 +58,14 @@ public class Movie implements Indexable, Archivable, Validable {
     public Movie() {
     }
 
-    public Movie(Long id, String title, int year, String description) {
+    public Movie(Long id, String title, Integer year, String description) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.description = description;
     }
 
-    public Movie(String title, int year, String description) {
+    public Movie(String title, Integer year, String description) {
         this.title = title;
         this.year = year;
         this.description = description;
@@ -102,11 +103,11 @@ public class Movie implements Indexable, Archivable, Validable {
         this.genres = genres;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
@@ -151,6 +152,10 @@ public class Movie implements Indexable, Archivable, Validable {
 
     @Override
     public boolean isValid() {
-        return !((title == null) || (year == null));
+        return (title != null) && isYearValid(year);
+    }
+
+    private boolean isYearValid(Integer year){
+        return (1895 < year && year < Year.now().getValue());
     }
 }
