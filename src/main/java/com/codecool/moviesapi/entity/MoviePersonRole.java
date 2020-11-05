@@ -38,21 +38,25 @@ public class MoviePersonRole {
         return p;
     }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     public Role getRole() {
         Role r = new Role();
         r.setName(role.getName());
         return r;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Integer getMovieYear() {
+        return movie.getYear();
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }
