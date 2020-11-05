@@ -1,12 +1,11 @@
-package com.codecool.moviesapi.entity;
+package com.codecool.moviesapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-@Entity(name = "genres")
-public class Genre implements Indexable, Archivable {
-
+@Entity(name = "countries")
+public class Country implements Indexable, Archivable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,12 +17,11 @@ public class Genre implements Indexable, Archivable {
     @Column(nullable = false, length = 50)
     private String name;
 
-    public Genre(Long id, String name) {
-        this.id = id;
+    public Country(String name) {
         this.name = name;
     }
 
-    public Genre() {
+    public Country() {
     }
 
     public Long getId() {
@@ -44,7 +42,7 @@ public class Genre implements Indexable, Archivable {
 
     @Override
     public String toString() {
-        return "Genre{" +
+        return "Country{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

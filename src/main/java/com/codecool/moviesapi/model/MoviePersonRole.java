@@ -1,4 +1,4 @@
-package com.codecool.moviesapi.entity;
+package com.codecool.moviesapi.model;
 
 import javax.persistence.*;
 

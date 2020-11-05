@@ -1,4 +1,4 @@
-package com.codecool.moviesapi.entity;
+package com.codecool.moviesapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

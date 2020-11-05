@@ -1,6 +1,6 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.entity.Person;
+import com.codecool.moviesapi.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;

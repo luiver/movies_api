@@ -1,7 +1,7 @@
 package com.codecool.moviesapi.service;
 
-import com.codecool.moviesapi.dao.GenreRepository;
-import com.codecool.moviesapi.entity.Genre;
+import com.codecool.moviesapi.repository.GenreRepository;
+import com.codecool.moviesapi.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.codecool.moviesapi.controller;
 
-import com.codecool.moviesapi.entity.Indexable;
+import com.codecool.moviesapi.model.Indexable;
 import com.codecool.moviesapi.service.GenericService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.codecool.moviesapi.service.csvservice;
 
-import com.codecool.moviesapi.entity.*;
+import com.codecool.moviesapi.model.*;
 import com.codecool.moviesapi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
